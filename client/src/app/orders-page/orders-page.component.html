@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vásárlások</title>
+</head>
+<body style="background-color: #1a2129;">
+    <header class="container-fluid pt-3 shadow-lg">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="nav-logo">
+            <h2 style="color: white; text-shadow: 2px 2px #5F9EA0;">Tickets</h2>
+        </div>
+          <div class="ms-auto">
+            <button type="button" class="btn btn-outline-primary me-2" title="Főoldal" (click)="navigateToHomePage()">Főoldal</button>
+            <button type="button" class="btn btn-outline-primary  me-2" title="Kosár" *ngIf="isLoggedIn && !isAdmin" (click)="navigateToCartPage()" >
+              <i style="color:#1588bd;font-size:0.7em;margin-right:0.7em;" class="bi bi-bag"></i>
+              Kosaram
+            </button>
+            <button type="reset" class="btn btn-outline-primary me-2" title="Kijelentkezés" (click)="logout()" *ngIf="isLoggedIn">
+              Kijelentkezés
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="card">
+            <div class="content-body">
+              <h1 class="card-title mb-4 ms-5 mt-3">Vásárlázi előzmények</h1>
+              <div *ngIf="myEvents && myEvents.length === 0" class=" ms-3 ">
+                <p>A kosarad jelenleg üres.</p>
+              </div>
+                <div class="row mb-4" *ngFor="let event of myEvents">
+                  <div class="col-lg-6 col-sm-8">
+                    <div class="itemside me-lg-5">
+                      <div class="ms-5">
+                        <h2 class="text-muted">{{ event.name }}</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-4 col-6">
+                    <div class="price-wrap lh-sm"> 
+                      <h2 class="price h6">{{ event.ticketPrice }} Ft</h2>
+                    </div> 
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+      </div> 
+    </div>
+</body>
+</html>

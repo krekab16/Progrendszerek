@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registráció</title>
+</head>
+<body style="background-color: #1a2129;">
+<header class="container-fluid pt-3 shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <div class="nav-logo">
+            <h2 style="color: white; text-shadow: 2px 2px #5F9EA0;">Tickets</h2>
+        </div>
+      </div>
+    </nav>
+</header>
+<div class="container h-100">
+        <div class="container my-5">
+            <div class="card-body2 mx-auto">
+                <div class="row mx-0 align-items-center" style="color: white;">
+                    <div class="col-md-6 p-2 p-sm-5 border-end ">
+                        <h3 class="mb-4 mb-sm-5 text-center">Helló!</h3>
+                        <div class="text-center fs-6">A vásárláshoz mindig be kell jelentkezned!</div>
+                        <div class="text-center fs-6">Ha még nincs fiókod, akkor regisztrálj.</div>
+                        <div class="d-flex d-sm-block d-none text-center">
+                            <img width="300" class="img-fluid" src="/assets/login.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-2 p-sm-5">
+                        <h3 class="me-3 text-center">Regisztráció</h3>
+                        <form action="/signin" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group mb-4 fs-6">
+                                <label for="name">Név</label>
+                                <input  formControlName="name" type="text" name="name" id="name" class="form-control">
+                            </div>
+                            <div class="form-group mb-4 fs-6">
+                                <label for="email">Email cím</label>
+                                <input  formControlName="email" type="email" name="email" id="email" class="form-control">
+                                <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
+                                    <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['required']" style="color: red;">
+                                        Email cím megadása kötelező.
+                                    </p>
+                                    <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['email']"  style="color: red;">
+                                        Kérem adjon meg egy helyes email címet.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4 fs-6">
+                                <label for="password">Jelszó</label>
+                                <input formControlName="password" type="password" name="password" id="password" class="form-control">
+                                <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
+                                    <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['required']"  style="color: red;">
+                                        Jelszó megadása kötelező.
+                                    </p>
+                                    <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['minlength']"  style="color: red;">
+                                        A jelszónak legalább 6 karakterből kell állnia.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-4">Regisztráció</button>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12 mt-2 text-center mt-3 h5">
+                                <div class="text-center">
+                                    <a>Van már fiókod? </a><a href="/loginPage">Jelentkezz be itt!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

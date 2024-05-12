@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Létrehozott események</title>
+</head>
+<body style="background-color: #1a2129;">
+<header class="container-fluid pt-3 shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <div class="nav-logo">
+            <h2 style="color: white; text-shadow: 2px 2px #5F9EA0;">Tickets</h2>
+        </div>
+        <div class="ms-auto">
+            <button type="button" class="btn btn-outline-primary me-2" title="Főoldal" (click)="navigateToHomePage()">Főoldal</button>
+            <button type="button" class="btn btn-outline-primary me-2" title="Létrehozott események"  (click)="navigateToCreateEventPage()" *ngIf="isAdmin">
+                Esemény létrehozás
+            </button>
+            <button type="button" class="btn btn-outline-primary me-2" title="Kijelentkezés" (click)="logout()" *ngIf="isLoggedIn">
+                Kijelentkezés
+            </button>
+        </div>
+      </div>
+    </nav>
+</header>
+<div class="mt-4 d-flex justify-content-center" style="color: white;">
+    <div class="container-fluid">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" >Név</th>
+                    <th scope="col">Jegyek száma</th>
+                    <th scope="col">Jegy ára</th>
+                    <th scope="col">Helyszín</th>
+                    <th scope="col">Kategória</th>
+                    <th scope="col">Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of events">
+                  <td>{{ event.name }}</td>
+                  <td>{{ event.ticketNumber }} darab</td>
+                  <td>{{ event.ticketPrice }} Ft</td>
+                  <td>{{ event.location }}</td>
+                  <td>{{ event.ticketCategory }}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary me-3" data-toggle="modal" data-target="#editEventModal" (click)="openEditModal(event)">
+                      Módosítás
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="deleteEvent(event)">
+                      Törlés
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-info" role="alert" *ngIf="isDeleted">
+                Sikeres törlés!
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

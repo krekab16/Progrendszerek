@@ -1,0 +1,24 @@
+<h1 mat-dialog-title class="ms-3">Szerkesztés</h1>
+<div mat-dialog-content>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field class="me-2">
+      <input matInput [(ngModel)]="event.name" name="name">
+    </mat-form-field>
+    <mat-form-field class="me-2">
+      <input matInput [(ngModel)]="event.ticketNumber" type="number" name="ticketNumber">
+    </mat-form-field>
+    <mat-form-field class="me-2">
+      <input matInput [(ngModel)]="event.ticketPrice" type="number" name="ticketPrice">
+    </mat-form-field>
+    <mat-form-field class="me-2">
+      <input matInput [(ngModel)]="event.location" name="location">
+    </mat-form-field>
+    <mat-form-field class="me-2">
+      <input matInput [(ngModel)]="event.ticketCategory" name="ticketCategory">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-secondary ms-4 me-3" (click)="onCancelClick()">Mégsem</button>
+  <button class="btn btn-primary" [mat-dialog-close]="event"  cdkFocusInitial>Mentés</button>
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kosár</title>
+</head>
+<body style="background-color: #1a2129;">
+    <header class="container-fluid pt-3 shadow-lg">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="nav-logo">
+            <h2 style="color: white; text-shadow: 2px 2px #5F9EA0;">Tickets</h2>
+        </div>
+          <div class="ms-auto">
+            <button type="button" class="btn btn-outline-primary me-2" title="Főoldal" (click)="navigateToHomePage()">Főoldal</button>
+            <button type="button" class="btn btn-outline-primary  me-2" title="Kosár" *ngIf="isLoggedIn && !isAdmin" (click)="navigateToOrderPage()" >
+              <i style="color:#1588bd;font-size:0.7em;margin-right:0.7em;" class="bi bi-bag"></i>
+              Vásárlásaim
+            </button>
+            <button type="reset" class="btn btn-outline-primary" title="Kijelentkezés" (click)="logout()" *ngIf="isLoggedIn">
+              Kijelentkezés
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="card">
+            <div class="content-body">
+              <h1 class="card-title mb-4 ms-3 mt-3">Kosár</h1>
+              <div *ngIf="myEvents && myEvents.length === 0" class=" ms-3 ">
+                <p>A kosarad jelenleg üres.</p>
+              </div>
+                <div class="row mb-4" *ngFor="let event of myEvents">
+                  <div class="col-lg-6 col-sm-8">
+                    <div class="itemside me-lg-5">
+                      <div class="ms-3">
+                        <h2 class="text-muted">{{ event.name }}</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-4 col-6">
+                    <div class="price-wrap lh-sm"> 
+                      <h2 class="price h6">{{ event.ticketPrice }} Ft</h2>
+                    </div> 
+                  </div>
+                  <div class="col-lg-3 col-sm-4">
+                    <div class="float-end me-3">
+                      <button class="btn btn-light text-danger" (click)="deleteFromCart(event)">
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="container mt-4">
+              <div class="row justify-content-center">
+                  <div class="col-md-6">
+                      <div class="alert alert-info" role="alert" *ngIf="isDeleted">
+                          Sikeres törlés!
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+          <div class="col-lg-3" *ngIf="myEvents && myEvents.length > 0">
+            <div class="card">
+              <div class="card-body">
+                <div class="dlist-align">
+                  <h2>Összeg:</h2>
+                  <h3 class="text-end text-dark h5"> {{totalPrice}} Ft </h3>
+                </div>
+                <div class="d-grid gap-2 my-3">
+                  <button class="btn btn-success w-100" (click)="addOrder(this.myEvents)"> Vásárlás </button>
+                </div>
+              </div>
+            </div> 
+          </div>
+      </div> 
+    </div>
+
+
+</body>
+</html>
+

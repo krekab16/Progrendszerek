@@ -1,0 +1,34 @@
+.card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    transition: 0.5s;
+    border-radius: 5px;
+    background-color:	 #353e4b;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .img-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 170px; /* A kép magassága */
+    }
+    
+    .img-container img {
+      transition: transform 0.5s ease; /* Animáció beállítása */
+    }
+    
+    .img-container:hover img {
+      transform: scale(1.2); /* A kép bezoomolása a hover eseményre */
+    }
+
+body{
+      background-color:  #1a2129;
+}
+
