@@ -28,7 +28,7 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post('http://localhost:3000/app/login', body, {headers: headers, withCredentials: true});
+    return this.http.post('http://172.100.0.10:5000/app/login', body, {headers: headers, withCredentials: true});
   }
 
   register(user: User) {
@@ -47,14 +47,14 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post('http://localhost:3000/app/register', body, {headers: headers});
+    return this.http.post('http://172.100.0.10:5000/app/register', body, {headers: headers});
   }
 
 
   logout() {
     this.isLoggedIn = false;
     this.isAdmin = false;
-    return this.http.post('http://localhost:3000/app/logout', {}, {withCredentials: true, responseType: 'text'});
+    return this.http.post('http://172.100.0.10:5000/app/logout', {}, {withCredentials: true, responseType: 'text'});
   }
 
   isLoggedInUser(){
@@ -66,6 +66,6 @@ export class AuthService {
   }
 
   checkAuth() {
-    return this.http.get<boolean>('http://localhost:3000/app/checkAuth', {withCredentials: true});
+    return this.http.get<boolean>('http://172.100.0.10:5000/app/checkAuth', {withCredentials: true});
   }
 }

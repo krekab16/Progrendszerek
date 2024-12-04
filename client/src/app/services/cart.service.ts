@@ -19,20 +19,20 @@ export class CartService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post('http://localhost:3000/app/addToCart', body, {headers: headers});
+    return this.http.post('http://172.100.0.10:5000/app/addToCart', body, {headers: headers});
    
   }
 
   deleteFromCart(id: string) {
     console.log(id);
-    return this.http.delete('http://localhost:3000/app/deleteFromCart?id=' + id, {withCredentials: true});
+    return this.http.delete('http://172.100.0.10:5000/app/deleteFromCart?id=' + id, {withCredentials: true});
   }
 
  
 
   getMyCart(id: any) {
     console.log(id);
-    return this.http.get<Event[]>('http://localhost:3000/app/getMyCart?id=' + id);
+    return this.http.get<Event[]>('http://172.100.0.10:5000/app/getMyCart?id=' + id);
   }
 
 }

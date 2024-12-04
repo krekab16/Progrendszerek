@@ -18,13 +18,13 @@ export class OrderService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
   
-    return this.http.post('http://localhost:3000/app/addOrder', body.toString(), {headers: headers});
+    return this.http.post('http://172.100.0.10:5000/app/addOrder', body.toString(), {headers: headers});
   }
 
 
   getMyOrder(id: any) {
     console.log(id);
-    return this.http.get<Event[]>('http://localhost:3000/app/getMyOrder?id=' + id);
+    return this.http.get<Event[]>('http://172.100.0.10:5000/app/getMyOrder?id=' + id);
   }
 
 

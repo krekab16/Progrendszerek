@@ -27,21 +27,21 @@ export class EventService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post('http://localhost:3000/app/createEvent', body, {headers: headers});
+    return this.http.post('http://172.100.0.10:5000/app/createEvent', body, {headers: headers});
 
   }
 
   getAllEvent() {
-    return this.http.get<Event[]>('http://localhost:3000/app/getAllEvents');
+    return this.http.get<Event[]>('http://172.100.0.10:5000/app/getAllEvents');
   }
 
   getEvent(id: string) {
     console.log(id);
-    return this.http.get<Event>('http://localhost:3000/app/getEventById?id=' + id);
+    return this.http.get<Event>('http://172.100.0.10:5000/app/getEventById?id=' + id);
   }
 
   deleteEvent(id: string) {
-    return this.http.delete('http://localhost:3000/app/deleteEvent?id=' + id, {withCredentials: true});
+    return this.http.delete('http://172.100.0.10:5000/app/deleteEvent?id=' + id, {withCredentials: true});
   }
   
   updateEvent(id: string, eventData: any) {
@@ -59,7 +59,7 @@ export class EventService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     console.log(eventData);
-    return this.http.put<Event>(`http://localhost:3000/app/updateEvent?id=${id}`, body, {headers: headers});
+    return this.http.put<Event>(`http://172.100.0.10:5000/app/updateEvent?id=${id}`, body, {headers: headers});
   }
 
 }
